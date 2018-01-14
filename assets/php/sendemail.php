@@ -18,5 +18,5 @@
 <html lang="en-US">
 <head>
 	<script>alert("Thank you for contact us. As early as possible  we will contact you.");</script>
-	<meta HTTP-EQUIV="REFRESH" content="0; url=http://trendytheme.net/demo/iamx/v/"> 
+	<meta HTTP-EQUIV="REFRESH" content="0; url=https://trendytheme.net/demo/iamx/v/"> 
 </head>
