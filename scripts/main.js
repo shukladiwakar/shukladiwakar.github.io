@@ -174,31 +174,29 @@ window.addEventListener('load', () => {
     }
 });
 
-// Add parallax effect to hero section
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroSection = document.querySelector('.hero-section');
-    if (heroSection) {
-        const rate = scrolled * -0.5;
-        heroSection.style.transform = `translateY(${rate}px)`;
-    }
-});
+// Parallax removed — it created a stacking context on the hero section
+// that blocked pointer events on buttons.
 
 // Add counter animation to stats
+// Preserves original suffix (e.g. "M+", "+", or nothing)
 const animateCounters = () => {
     const counters = document.querySelectorAll('.stat-item h4');
     counters.forEach(counter => {
-        const target = parseInt(counter.textContent);
-        const increment = target / 100;
+        const originalText = counter.textContent.trim();
+        const numMatch = originalText.match(/^(\d+)/);
+        if (!numMatch) return; // no leading number — skip
+        const target = parseInt(numMatch[1], 10);
+        const suffix = originalText.slice(numMatch[1].length); // e.g. "M+", "+", ""
+        const increment = Math.max(1, target / 60);
         let current = 0;
-        
+
         const updateCounter = () => {
             if (current < target) {
                 current += increment;
-                counter.textContent = Math.ceil(current) + '+';
+                counter.textContent = Math.min(Math.ceil(current), target) + suffix;
                 setTimeout(updateCounter, 20);
             } else {
-                counter.textContent = target + '+';
+                counter.textContent = target + suffix;
             }
         };
         updateCounter();

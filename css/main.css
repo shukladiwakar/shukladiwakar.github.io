@@ -140,6 +140,7 @@ p {
     bottom: 0;
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.1));
     z-index: 1;
+    pointer-events: none;
 }
 
 .hero-section::before {
@@ -227,6 +228,10 @@ p {
 }
 
 .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
     margin-bottom: 2rem;
 }
 
@@ -433,7 +438,7 @@ p {
 
 .contact-info {
     background: white;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--gray-200);
@@ -441,29 +446,35 @@ p {
 
 .info-item {
     display: flex;
-    align-items: center;
-    margin-bottom: 1.5rem;
-    padding: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.85rem;
+    padding: 0.75rem 1rem;
     background: var(--gray-100);
     border-radius: var(--border-radius);
     transition: var(--transition);
+    min-width: 0;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
 }
 
 .info-item:hover {
     background: var(--gray-200);
-    transform: translateX(5px);
+    transform: translateX(4px);
 }
 
 .info-icon {
-    width: 50px;
-    height: 50px;
+    width: 42px;
+    height: 42px;
+    min-width: 42px;
     background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
-    margin-right: 1rem;
+    margin-right: 0.85rem;
     flex-shrink: 0;
     transition: var(--transition);
 }
@@ -473,14 +484,26 @@ p {
     box-shadow: var(--shadow-md);
 }
 
+.info-content {
+    min-width: 0;
+    flex: 1;
+}
+
 .info-content h5 {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.15rem;
     color: var(--gray-900);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .info-content p {
     margin: 0;
     color: var(--gray-600);
+    font-size: 0.95rem;
+    word-break: break-word;
+    line-height: 1.4;
 }
 
 /* ===== SKILLS SECTION ===== */
